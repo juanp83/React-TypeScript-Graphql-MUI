@@ -1,10 +1,25 @@
 import React from "react"
-import { Controller, Control } from "react-hook-form"
+import { useFormContext, Controller } from "react-hook-form"
 import { TextField } from "../material"
 
-const TextInput = 
-    ({ name, control, label, error=false, errorMessage }: 
-        { name: string, control: any, label: string, error?: boolean, errorMessage?: string }) => {
+type FormValues = {
+    name: string, 
+    label: string,
+    required?: boolean,
+    error?: boolean,
+    errorMessage?: string, 
+    defaultValue?: string,
+}
+
+const TextInput = ({ 
+    name, 
+    label, 
+    required=false, 
+    error=false, 
+    errorMessage, 
+    defaultValue 
+}: FormValues) => {
+    const { control } = useFormContext()
     return (
         <Controller
             name={name}
@@ -16,9 +31,11 @@ const TextInput =
                     value={value}
                     label={label}
                     placeholder={label} 
-                    type="password"
+                    required={required}
+                    type="text"
                     helperText={errorMessage}
                     error={error}
+                    defaultValue={defaultValue}
                 />
             )}
         />

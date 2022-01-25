@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import { Box } from 'shared-components/material'
 
-function AuthForm({ children }: { children: ReactNode[] }) {
+function CenteredForm({ children }: { children: ReactNode[] }) {
     return (
         <Box
             component="form"
@@ -22,4 +22,4 @@ function AuthForm({ children }: { children: ReactNode[] }) {
     )
 }
 
-export default AuthForm
+export default CenteredForm

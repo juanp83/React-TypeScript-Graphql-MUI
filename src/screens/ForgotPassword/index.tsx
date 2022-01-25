@@ -1,13 +1,13 @@
 import React from 'react'
 import SplitScreen from 'shared-components/layout/SplitScreen' // Only two children allowed
 import { TextField, Button, Typography } from 'shared-components/material'
-import AuthForm from 'shared-components/layout/AuthForm'
+import CenteredForm from 'shared-components/layout/CenteredForm'
 
 function ForgotPassword () {
     return (
         <SplitScreen> 
             <div>Div 1</div>
-            <AuthForm>
+            <CenteredForm>
                 <Typography variant="h2" component="h2">
                 Password Reset
                 </Typography>
@@ -23,7 +23,7 @@ function ForgotPassword () {
                 />
                 <Button variant="contained" size="large">Reset Password</Button>
                 <Button variant="text" size="small" href='/login'>Back to Login</Button>
-            </AuthForm>
+            </CenteredForm>
         </SplitScreen>
     )
 }
