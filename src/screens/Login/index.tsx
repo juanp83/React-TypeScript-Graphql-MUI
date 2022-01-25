@@ -5,6 +5,7 @@ import * as yup from "yup"
 import { CenteredForm, SplitScreen } from 'shared-components/layout'
 import { Typography, Button, Link, Divider } from 'shared-components/material/core'
 import { PasswordInput, TextInput } from 'shared-components/inputs'
+import { AccessAccountSVG } from 'shared-components/svg'
 
 const schema = yup.object({
     email: yup.string().email("please enter a valid email").required(),
@@ -39,8 +40,7 @@ function Login () {
     {/* Only two children allowed in splitscreen component*/}
     return (
         <FormProvider {...methods} >
-            <SplitScreen> 
-                <div />
+            <SplitScreen svg={<AccessAccountSVG width={'75%'} />}> 
                 <CenteredForm>
                     <Typography variant="h2" component="h2" textAlign='left'>
                         Login

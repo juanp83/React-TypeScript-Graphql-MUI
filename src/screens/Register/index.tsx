@@ -5,6 +5,7 @@ import * as yup from "yup"
 import { CenteredForm, SplitScreen } from 'shared-components/layout'
 import { Button, Typography, Divider } from 'shared-components/material/core'
 import { TextInput, PasswordInput } from 'shared-components/inputs'
+import { RegisterSVG } from 'shared-components/svg'
 
 const schema = yup.object({
     firstName: yup.string().required(),
@@ -59,8 +60,7 @@ function Register() {
 
     return (
         <FormProvider {...methods} >
-            <SplitScreen>
-                <div />
+            <SplitScreen svg={<RegisterSVG width="75%" />}>
                 <CenteredForm>
                     <Typography variant="h2" component="h2" textAlign='left'>
                         Register
