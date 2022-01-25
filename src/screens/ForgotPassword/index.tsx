@@ -1,6 +1,6 @@
 import React from 'react'
 import SplitScreen from 'shared-components/layout/SplitScreen' // Only two children allowed
-import { TextField, Button, Typography } from 'shared-components/material'
+import { TextField, Button, Typography } from 'shared-components/material/core'
 import CenteredForm from 'shared-components/layout/CenteredForm'
 
 function ForgotPassword () {

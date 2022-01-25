@@ -13,7 +13,7 @@ import {
   ListItemText,
   Toolbar,
   Typography,
-} from 'shared-components/material'
+} from 'shared-components/material/core'
 
 import {
   DownloadForOfflineIcon,
@@ -23,7 +23,7 @@ import {
   ManageAccountsIcon,
   MenuIcon,
   PeopleAltIcon,
-} from 'shared-components/icons'
+} from 'shared-components/material/icons'
 
 const drawerWidth = 240;
 const navOptions = [

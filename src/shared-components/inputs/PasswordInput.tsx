@@ -1,6 +1,6 @@
 import React from "react"
 import { Controller, useFormContext } from "react-hook-form"
-import { TextField } from "../material"
+import { TextField } from "../material/core"
 
 type FormValues = {
     name: string, 

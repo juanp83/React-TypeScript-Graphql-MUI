@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import { Box } from 'shared-components/material'
+import { Box } from 'shared-components/material/core'
 
 function CenteredForm({ children }: { children: ReactNode[] }) {
     return (

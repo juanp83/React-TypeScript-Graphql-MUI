@@ -2,9 +2,8 @@ import React from 'react'
 import { useForm, FormProvider } from "react-hook-form"
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
-import CenteredForm from 'shared-components/layout/CenteredForm'
-import SplitScreen from 'shared-components/layout/SplitScreen'
-import { Button, Typography, Divider } from 'shared-components/material'
+import { CenteredForm, SplitScreen } from 'shared-components/layout'
+import { Button, Typography, Divider } from 'shared-components/material/core'
 import { TextInput, PasswordInput } from 'shared-components/inputs'
 
 const schema = yup.object({
