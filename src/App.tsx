@@ -108,6 +108,7 @@ function App() {
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` },
         }}
+        aria-label="topbar"
       >
         <Toolbar>
           <IconButton
@@ -119,7 +120,7 @@ function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography variant="h6" noWrap component="h2">
             {activeNavOption.text}
           </Typography>
         </Toolbar>
@@ -127,7 +128,7 @@ function App() {
       <Box
         component="nav"
         sx={{ width: { sm: drawerWidth }, flexShrink: { sm: 0 } }}
-        aria-label="mailbox folders"
+        aria-label="sidebar"
       >
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Drawer
@@ -158,6 +159,7 @@ function App() {
       <Box
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
+        aria-label="Main Content"
       >
         <Toolbar />
         <Outlet /> { /* this is a react router feature and renders /app route child components */ }
