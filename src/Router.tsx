@@ -10,6 +10,7 @@ import Downloads from 'screens/Downloads'
 import Preferences from 'screens/Preferences'
 import Help from 'screens/Help'
 import Register from 'screens/Register'
+import NotFound from 'screens/NotFound'
 
 function Router () {
   return (
@@ -26,7 +27,7 @@ function Router () {
             <Route path={'preferences'} element={<Preferences />} />
             <Route path={'help'} element={<Help />} />
         </Route>
-    
+        <Route path='*' element={<NotFound />} />
     </Routes>
   )
 }

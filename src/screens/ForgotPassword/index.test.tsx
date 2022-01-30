@@ -1,8 +1,10 @@
 import React from 'react'
-import { render, screen } from '@testing-library/react'
+import { render, screen, fireEvent } from '@testing-library/react'
+import { MemoryRouter, Routes, Route } from 'react-router-dom'
 import userEvent from '@testing-library/user-event'
 
 import ForgotPassword from './index'
+import Login from '../Login'
 
 describe('ForgotPassword', () => {
 
@@ -32,5 +34,4 @@ describe('ForgotPassword', () => {
 
     expect(screen.getByRole('textbox')).toHaveValue('juan@discoverygenie.com')
   })
-
 })
