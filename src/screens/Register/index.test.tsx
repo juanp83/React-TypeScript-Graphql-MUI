@@ -5,52 +5,70 @@ import userEvent from '@testing-library/user-event'
 import Register from './index'
 
 describe('Register', () => {
+  beforeEach(() => {
+    render(<Register />)
+  })
 
   test('renders Register component', () => {
-    render(<Register />)
+    const firstNameTextbox = screen.getByRole('textbox', { name: 'First Name' })
+    const lastNameTextbox = screen.getByRole('textbox', { name: 'Last Name' })
+    const firmNameTextbox = screen.getByRole('textbox', { name: 'Firm Name' })
+    const emailTextbox = screen.getByRole('textbox', { name: 'E-Mail' })
+    const passwordTextbox = screen.getByPlaceholderText('Password')
+    const confirmPasswordTextbox = screen.getByPlaceholderText('Confirm Password')
 
     expect(screen.getByText('Register.svg')).toBeInTheDocument()
-
     expect(screen.getByRole('heading', { name: 'Register' })).toBeInTheDocument()
 
-    expect(screen.getByRole('textbox', { name: 'First Name' })).toBeInTheDocument()
-    expect(screen.getByRole('textbox', { name: 'Last Name' })).toBeInTheDocument()
-    expect(screen.getByRole('textbox', { name: 'Firm Name' })).toBeInTheDocument()
-    expect(screen.getByRole('textbox', { name: 'E-Mail' })).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('Password')).toBeInTheDocument()
-    expect(screen.getByPlaceholderText('Confirm Password')).toBeInTheDocument()
+    expect(firstNameTextbox).toBeInTheDocument()
+    expect(lastNameTextbox).toBeInTheDocument()
+    expect(firmNameTextbox).toBeInTheDocument()
+    expect(emailTextbox).toBeInTheDocument()
+    expect(passwordTextbox).toBeInTheDocument()
+    expect(confirmPasswordTextbox).toBeInTheDocument()
 
     expect(screen.getByRole('button', { name: 'Register'})).toBeInTheDocument()
-
     expect(screen.getByText('Already have an account?')).toBeInTheDocument()
-    
     expect(screen.getByRole('link', { name: 'Login' })).toBeInTheDocument()
 
   })
 
   test('User can enter info', () => {
-    render(<Register />)
+    const firstNameTextbox = screen.getByRole('textbox', { name: 'First Name' })
+    const lastNameTextbox = screen.getByRole('textbox', { name: 'Last Name' })
+    const firmNameTextbox = screen.getByRole('textbox', { name: 'Firm Name' })
+    const emailTextbox = screen.getByRole('textbox', { name: 'E-Mail' })
+    const passwordTextbox = screen.getByPlaceholderText('Password')
+    const confirmPasswordTextbox = screen.getByPlaceholderText('Confirm Password')
+
+    const userMock = {
+      firstName: 'Bob',
+      lastName: 'Lob',
+      firmName: 'Bob Lob Law',
+      email: 'bob@test.com',
+      password: 'Aslkjf!'
+    }
     
-    expect(screen.getByRole('textbox', { name: 'First Name' })).toHaveValue('')
-    expect(screen.getByRole('textbox', { name: 'Last Name' })).toHaveValue('')
-    expect(screen.getByRole('textbox', { name: 'Firm Name' })).toHaveValue('')
-    expect(screen.getByRole('textbox', { name: 'E-Mail' })).toHaveValue('')
-    expect(screen.getByPlaceholderText('Password')).toHaveValue('')
-    expect(screen.getByPlaceholderText('Confirm Password')).toHaveValue('')
+    expect(firstNameTextbox).toHaveValue('')
+    expect(lastNameTextbox).toHaveValue('')
+    expect(firmNameTextbox).toHaveValue('')
+    expect(emailTextbox).toHaveValue('')
+    expect(passwordTextbox).toHaveValue('')
+    expect(confirmPasswordTextbox).toHaveValue('')
 
-    userEvent.type(screen.getByRole('textbox', { name: 'First Name' }), 'Bob')
-    userEvent.type(screen.getByRole('textbox', { name: 'Last Name' }), 'Lob')
-    userEvent.type(screen.getByRole('textbox', { name: 'Firm Name' }), 'Bob Lob Law')
-    userEvent.type(screen.getByRole('textbox', { name: 'E-Mail' }), 'Bob@BobLobLaw.com')
-    userEvent.type(screen.getByPlaceholderText('Password'), 'Asdfjkl!')
-    userEvent.type(screen.getByPlaceholderText('Confirm Password'), 'Asdfjkl!')
+    userEvent.type(firstNameTextbox, userMock.firstName)
+    userEvent.type(lastNameTextbox, userMock.lastName)
+    userEvent.type(firmNameTextbox, userMock.firmName)
+    userEvent.type(emailTextbox, userMock.email)
+    userEvent.type(passwordTextbox, userMock.password)
+    userEvent.type(confirmPasswordTextbox, userMock.password)
 
-    expect(screen.getByRole('textbox', { name: 'First Name' })).toHaveValue('Bob')
-    expect(screen.getByRole('textbox', { name: 'Last Name' })).toHaveValue('Lob')
-    expect(screen.getByRole('textbox', { name: 'Firm Name' })).toHaveValue('Bob Lob Law')
-    expect(screen.getByRole('textbox', { name: 'E-Mail' })).toHaveValue('Bob@BobLobLaw.com')
-    expect(screen.getByPlaceholderText('Password')).toHaveValue('Asdfjkl!')
-    expect(screen.getByPlaceholderText('Confirm Password')).toHaveValue('Asdfjkl!')
+    expect(firstNameTextbox).toHaveValue(userMock.firstName)
+    expect(lastNameTextbox).toHaveValue(userMock.lastName)
+    expect(firmNameTextbox).toHaveValue(userMock.firmName)
+    expect(emailTextbox).toHaveValue(userMock.email)
+    expect(passwordTextbox).toHaveValue(userMock.password)
+    expect(confirmPasswordTextbox).toHaveValue(userMock.password)
   })
 
 })

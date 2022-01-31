@@ -5,9 +5,11 @@ import userEvent from '@testing-library/user-event'
 import ResetPassword from './index'
 
 describe('ResetPassword', () => {
+  beforeEach(() => {
+    render(<ResetPassword />)
+  })
 
   test('renders ResetPassword component', () => {
-    render(<ResetPassword />)
 
     expect(screen.getByText('ResetPassword.svg')).toBeInTheDocument()
 
@@ -20,23 +22,19 @@ describe('ResetPassword', () => {
   })
 
   test('User can enter password', () => {
-    render(<ResetPassword />)
+    const passwordTextbox = screen.getByPlaceholderText('Password')
     
-    expect(screen.getByPlaceholderText('Password')).toHaveValue('')
-
-    userEvent.type(screen.getByPlaceholderText('Password'), 'sldkfj')
-
-    expect(screen.getByPlaceholderText('Password')).toHaveValue('sldkfj')
+    expect(passwordTextbox).toHaveValue('')
+    userEvent.type(passwordTextbox, 'sldkfj')
+    expect(passwordTextbox).toHaveValue('sldkfj')
   })
 
   test('User can enter confirm password', () => {
-    render(<ResetPassword />)
+    const confirmPasswordTextbox = screen.getByPlaceholderText('Confirm Password')
     
-    expect(screen.getByPlaceholderText('Confirm Password')).toHaveValue('')
-
-    userEvent.type(screen.getByPlaceholderText('Confirm Password'), 'sldkfj')
-
-    expect(screen.getByPlaceholderText('Confirm Password')).toHaveValue('sldkfj')
+    expect(confirmPasswordTextbox).toHaveValue('')
+    userEvent.type(confirmPasswordTextbox, 'sldkfj')
+    expect(confirmPasswordTextbox).toHaveValue('sldkfj')
   })
 
 })

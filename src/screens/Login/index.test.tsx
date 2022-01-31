@@ -6,8 +6,14 @@ import Login from './index'
 
 describe('Login', () => {
 
-  test('renders Login component', () => {
+  beforeEach(() => {
     render(<Login />)
+  })
+
+  const emailMock = 'juan@discoverygenie.com'
+  const passwordMock = 'Aslkjf!'
+
+  test('renders Login component', () => {
 
     expect(screen.getByText('AccessAccount.svg')).toBeInTheDocument()
 
@@ -28,23 +34,17 @@ describe('Login', () => {
   })
 
   test('User can enter email', () => {
-    render(<Login />)
-    
-    expect(screen.getByPlaceholderText('E-Mail')).toHaveValue('')
-
-    userEvent.type(screen.getByPlaceholderText('E-Mail'), 'juan@discoverygenie.com')
-
-    expect(screen.getByPlaceholderText('E-Mail')).toHaveValue('juan@discoverygenie.com')
+    const emailTextbox = screen.getByPlaceholderText('E-Mail')
+    expect(emailTextbox).toHaveValue('')
+    userEvent.type(emailTextbox, emailMock)
+    expect(emailTextbox).toHaveValue(emailMock)
   })
 
   test('User can enter password', () => {
-    render(<Login />)
-    
-    expect(screen.getByPlaceholderText('Password')).toHaveValue('')
-
-    userEvent.type(screen.getByPlaceholderText('Password'), 'sldkfj')
-
-    expect(screen.getByPlaceholderText('Password')).toHaveValue('sldkfj')
+    const passwordTextbox = screen.getByPlaceholderText('Password')
+    expect(passwordTextbox).toHaveValue('')
+    userEvent.type(passwordTextbox, passwordMock)
+    expect(passwordTextbox).toHaveValue(passwordMock)
   })
 
 })

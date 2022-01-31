@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, screen, fireEvent, act, waitFor } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import ForgotPassword from './index'
 
@@ -25,23 +25,18 @@ describe('ForgotPassword', () => {
   })
 
   test('User can enter email', () => {
-    
-    expect(screen.getByRole('textbox')).toHaveValue('')
-
-    userEvent.type(screen.getByRole('textbox'), 'juan@discoverygenie.com')
-
-    expect(screen.getByRole('textbox')).toHaveValue('juan@discoverygenie.com')
+    const emailTextbox = screen.getByRole('textbox')
+    expect(emailTextbox).toHaveValue('')
+    userEvent.type(emailTextbox, 'juan@discoverygenie.com')
+    expect(emailTextbox).toHaveValue('juan@discoverygenie.com')
   })
 
   test('User sees success message', async () => {
-
     userEvent.type(screen.getByRole('textbox'), 'juan@discoverygenie.com')
-
     userEvent.click(screen.getByRole('button', { name: 'Reset Password' }))
 
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: 'Success!' })).toBeInTheDocument()
-      screen.debug()
     })
 
   })
