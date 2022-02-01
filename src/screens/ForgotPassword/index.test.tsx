@@ -4,11 +4,9 @@ import userEvent from '@testing-library/user-event'
 import ForgotPassword from './index'
 
 describe('ForgotPassword', () => {
-  beforeEach(() => {
-    render(<ForgotPassword />)
-  })
 
   test('renders ForgotPassword component', () => {
+    render(<ForgotPassword />)
 
     expect(screen.getByText('ForgotPassword.svg')).toBeInTheDocument()
 
@@ -25,6 +23,7 @@ describe('ForgotPassword', () => {
   })
 
   test('User can enter email', () => {
+    render(<ForgotPassword />)
     const emailTextbox = screen.getByRole('textbox')
     expect(emailTextbox).toHaveValue('')
     userEvent.type(emailTextbox, 'juan@discoverygenie.com')
@@ -32,12 +31,30 @@ describe('ForgotPassword', () => {
   })
 
   test('User sees success message', async () => {
+    render(<ForgotPassword />)
     userEvent.type(screen.getByRole('textbox'), 'juan@discoverygenie.com')
     userEvent.click(screen.getByRole('button', { name: 'Reset Password' }))
 
     await waitFor(() => {
       expect(screen.getByRole('heading', { name: 'Success!' })).toBeInTheDocument()
     })
-
   })
+
+  // test('User can navigate to login screen', async () => {
+  //   render(
+  //     <MemoryRouter initialEntries={['/forgot-password' ]}>
+  //       <Routes>
+  //           <Route path='/forgot-password' element={<ForgotPassword/>} />
+  //           <Route path='/login' element={<Login />} />
+  //       </Routes>
+  //     </MemoryRouter>
+  //   )
+
+  //   userEvent.click(screen.getByRole('link', { name: 'Back to Login' }))
+
+  //   await waitFor(() => {
+  //     expect(screen.getByRole('heading', { name: 'Login' })).toBeInTheDocument()
+  //   })
+  // })
+
 })
